@@ -3,16 +3,16 @@
 sleep 1 && curl -s https://raw.githubusercontent.com/cryptongithub/init/main/logo.sh | bash && sleep 1
 
 # set vars
-if [ ! $NODENAME ]; then
+if [ ! ${NODENAME} ]; then
 	read -p "Enter node name: " NODENAME
-	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
+	export NODENAME=${NODENAME} >> $HOME/.bash_profile
 fi
-if [ ! $WALLETNAME ]; then
+if [ ! ${WALLETNAME} ]; then
 	read -p "Enter wallet name: " WALLETNAME
-	echo "export WALLET='$WALLETNAME" >> $HOME/.bash_profile
+	export WALLETNAME=${WALLETNAME} >> $HOME/.bash_profile
 fi
-echo "export CHAIN_ID=quicktest-3" >> $HOME/.bash_profile
-source $HOME/.bash_profile
+export CHAIN_ID=quicktest-3 >> $HOME/.bash_profile
+source ~/.bash_profile
 
 # update
 sudo apt update && sudo apt upgrade -y
